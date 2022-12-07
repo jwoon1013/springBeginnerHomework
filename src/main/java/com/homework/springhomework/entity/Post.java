@@ -1,5 +1,6 @@
 package com.homework.springhomework.entity;
 
+import com.homework.springhomework.dto.PostRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,13 @@ public class Post extends TimeStamped{
 
     @Column(nullable = false)
     private String password;
+
+    public Post(PostRequestDto postRequestDto){
+        this.title = postRequestDto.getTitle();
+        this.author = postRequestDto.getAuthor();
+        this.content = postRequestDto.getContent();
+        this.password = postRequestDto.getPassword();
+    }
 
 
 }
