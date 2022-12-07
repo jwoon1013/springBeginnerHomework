@@ -33,5 +33,23 @@ public class PostService {
         );
         return post;
     }
+
+    @Transactional // 포스트 수정
+    public Long update(Long id, PostRequestDto postRequestDto) {
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new RuntimeException(("해당 id의 포스트가 존재하지 않습니다"))
+        );
+        String pw = postRequestDto.getPassword(); // 입력한 비번
+        String correctPw = post.getPassword(); // 업데이트할 포스트가 갖고있는 비번
+
+        if(pw.equals(correctPw)){
+            // 수정 작업 로직이 여기서 돌아가.
+            return post.getId(); // 리턴을 왜 시키지...?? x 123515415번
+        } else {
+            throw new RuntimeException("비밀번호가 맞지 않습니다.");
+
+        }
+
     }
+}
 
