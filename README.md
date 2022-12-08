@@ -30,3 +30,14 @@ blog의 백엔드 만들어보고, 백단의 동작구조 이해하기.
   - 3. RESTful한 API를 설계했나요? 어떤 부분이 그런가요? 어떤 부분이 그렇지 않나요?   
   - 4. 적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)  
   - 5. API 명세서 작성 가이드라인을 검색하여 직접 작성한 API 명세서와 비교해보세요!  
+
+# API 명세서 
+
+
+| 기능 | Method | URL | Request | Response |
+| ---   |        --- | ---   |       --- |          --- | 
+| 게시글 작성  | POST | /posts | title, author, content, password| createdAt, modifiedAt, id, ttitle, author, content, msg |  
+| 전체게시글 목록조회 | GET | /posts | 없음 | createdAt, modifiedAt, id, ttitle, author, content |  
+| 선택한 게시글 조회 | GET | /posts/{id} | 없음 | createdAt, modifiedAt, id, ttitle, author, content, msg |  
+| 선택한 게시글 수정 | PUT | /posts/{id} | title, author, content, passwrod | createdAt, modifiedAt, id, ttitle, author, content, msg  |  
+| 선택한 게시글 삭제  | DELETE | /posts/{id} | password | msg |  
