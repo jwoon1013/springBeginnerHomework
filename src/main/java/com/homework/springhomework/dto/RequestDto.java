@@ -2,9 +2,10 @@
 // 로직을 가지지 않고, 데이터 객체에 대한 정보만 담는다.
 package com.homework.springhomework.dto;
 
+import com.homework.springhomework.entity.Post;
 import lombok.Getter;
 @Getter
-public class PostRequestDto {
+public class RequestDto { // "리퀘스트 " DTO!!
 
     private String title;
 
@@ -13,4 +14,10 @@ public class PostRequestDto {
     private String content;
 
     private String password;
+
+    public Post toEntity(){
+
+        return new Post(this.title, this.author, this.content, this.password);
+    }
+
 }
