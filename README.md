@@ -2,12 +2,12 @@
 스프링 입문주차 숙제(22/12/06~22/12/09 제출)  
 blog의 백엔드 만들어보고, 백단의 동작구조 이해하기.  
 
-# 주의사항  
+# 1. 과제 작성시 주의사항  
 - Entity를 그대로 반환하지 말고 DTO 에 담아서 반환.  
 - 뷰(HTML/CSS/JS) 없이 JSON만 반환하는 API로 서버 로직 이해하기.  
 - Postman으로 서버가 반환하는 결과값 확인
 
-# 과제 요구사항  
+# 2. 과제 요구사항  
 1. 전체 게시글 목록 조회 API  
     - 제목, 작성자명, 작성 내용, 작성 날짜를 조회하기  
     - 작성 날짜 기준 내림차순으로 정렬하기  
@@ -31,7 +31,7 @@ blog의 백엔드 만들어보고, 백단의 동작구조 이해하기.
   - 4. 적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)  
   - 5. API 명세서 작성 가이드라인을 검색하여 직접 작성한 API 명세서와 비교해보세요!  
 
-# API 명세서 
+# 3. API 명세서 
 
 
 | 기능 | Method | URL | Request | Response |
@@ -42,5 +42,5 @@ blog의 백엔드 만들어보고, 백단의 동작구조 이해하기.
 | 선택한 게시글 수정 | PUT | /posts/{id} | title, author, content, passwrod | createdAt, modifiedAt, id, ttitle, author, content, msg  |  
 | 선택한 게시글 삭제  | DELETE | /posts/{id} | password | msg |  
 
-#  Use Case
+#  4. Use Case
 ![usecase](/03.PNG)   
