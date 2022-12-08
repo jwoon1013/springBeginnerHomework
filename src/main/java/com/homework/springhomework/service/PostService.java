@@ -28,12 +28,12 @@ public class PostService {
 
     @Transactional(readOnly = true) // 전체 포스트 보여주기
     public ResponseTotalPostDto getPostList() { // 얘가 안오는 문제가 있는 부분이구요..
-//        List<Post> list = postRepository.findAllByOrderByModifiedAtDesc();
-//        List<ResponsePostDto> postsResponseDtoList = new ArrayList<>();
-//        for (Post post : list) {
-//            ResponsePostDto responsePostDto = new ResponsePostDto(post);
-//            postsResponseDtoList.add(responsePostDto);
-//        }
+        List<Post> list = postRepository.findAllByOrderByModifiedAtDesc();
+        List<ResponsePostDto> postsResponseDtoList = new ArrayList<>();
+        for (Post post : list) {
+            ResponsePostDto responsePostDto = new ResponsePostDto(post);
+            postsResponseDtoList.add(responsePostDto);
+        }
         ResponseTotalPostDto responseTotalPostDto = new ResponseTotalPostDto(postsResponseDtoList, "진심 스스로불러온 재앙이구요. 스스로 작성한 API 명세서에 고통받는다");
 
         return responseTotalPostDto;
