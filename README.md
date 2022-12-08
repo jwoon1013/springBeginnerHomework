@@ -41,3 +41,6 @@ blog의 백엔드 만들어보고, 백단의 동작구조 이해하기.
 | 선택한 게시글 조회 | GET | /posts/{id} | 없음 | createdAt, modifiedAt, id, ttitle, author, content, msg |  
 | 선택한 게시글 수정 | PUT | /posts/{id} | title, author, content, passwrod | createdAt, modifiedAt, id, ttitle, author, content, msg  |  
 | 선택한 게시글 삭제  | DELETE | /posts/{id} | password | msg |  
+
+#  Use Case
+![usecase](/03.PNG)   
