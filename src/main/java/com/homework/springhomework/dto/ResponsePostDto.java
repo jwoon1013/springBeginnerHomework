@@ -2,9 +2,12 @@ package com.homework.springhomework.dto;
 
 import com.homework.springhomework.entity.Post;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
+
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponsePostDto { // 리스폰스
