@@ -58,12 +58,12 @@ public class PostService {
     }
 
     @Transactional
-    public DeleteResponseDto deletePost(Long id, String password) {
+    public DeleteResponseDto deletePost(Long id, DeleteRequestDto deleteRequestDto) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 id의 포스트가 존재하지 않습니다."));
-        if (post.checkPw(password)) {
+        if (post.checkPw(deleteRequestDto.getPassword())) {
             postRepository.deleteById(id);
         } else throw new RuntimeException("비밀번호가 틀렸습니다.");
-        DeleteResponseDto deleteResponseDto = new DeleteResponseDto("포스트가 정상적으로 삭제되었습니다.");
+            DeleteResponseDto deleteResponseDto = new DeleteResponseDto("포스트가 정상적으로 삭제되었습니다.");
         return deleteResponseDto;
     }
 
