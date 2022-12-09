@@ -37,10 +37,17 @@ blog의 백엔드 만들어보고, 백단의 동작구조 이해하기.
 | 기능 | Method | URL | Request | Response |
 | ---   |        --- | ---   |       --- |          --- | 
 | 게시글 작성  | POST | /posts | title, author, content, password| createdAt, modifiedAt, id, ttitle, author, content, msg |  
-| 전체게시글 목록조회 | GET | /posts | 없음 | createdAt, modifiedAt, id, ttitle, author, content |  
+| 전체게시글 목록조회 | GET | /posts | 없음 | createdAt, modifiedAt, id, ttitle, author, content, msg |  
 | 선택한 게시글 조회 | GET | /posts/{id} | 없음 | createdAt, modifiedAt, id, ttitle, author, content, msg |  
 | 선택한 게시글 수정 | PUT | /posts/{id} | title, author, content, passwrod | createdAt, modifiedAt, id, ttitle, author, content, msg  |  
-| 선택한 게시글 삭제  | DELETE | /posts/{id} | password | msg |  
+| 선택한 게시글 삭제  | DELETE | /posts/{id} | id, password | msg |    
 
 #  4. Use Case
 ![usecase](/03.PNG)   
+
+# 5. 느낀 점  
+API 명세서를 잘 짜는건 생각보다 중요했다  
+DTO에 메세지를 달겠다고 생각한 이유는, 처음에 API명세 구성할때 HTTP 에러 코드가 있다는 것을 생각하지 못하고(처음에 스프링 입문 1-5 수업때는 제공받은 index.html이 화면에 보여주는 결과만 봤어서, 떠올리지 못했다. 이론으로 알고있는 지식을 실제 실습에 연결시키지 못했던 것. 그런 이유로 "이게 메세지가 잘 갔는지 못갔는지 알려주는 메세지 같은게 달렸음 좋겠다" 싶어서 모든 DTO에 메세지 필드를 달아놓는 짓을 했는데... 특히 전체 포스트 리스트를 보내는 메소드에서 그냥 DTO리스트를 보내면 될거를 그 리스트에 메세지 하나를 더 담아 보내야 해서 100개짜리 리스트면 100개의 [포스트필드들+메세지]가 담긴 DTO에 메세지 한개 더 붙여서 101개 메세지를 보내는 정신나간 코드를 짜게되었다. 스스로 불러온 재앙에 짓눌려 무진장 고통받았고, API명세서를 잘 짜는게 왜 중요한지 절실하게 느꼈다..   
+그래도 모든 DTO가 [보내줘야하는 정보값 + 쓸데없는 메세지] 로 구성되있다보니, 지금까지 궁금했던 "왜 API 명세 작성할때 클래스 명으로 쓰지 않고 그 클래스 안에 들어있는 필드값을 다 하나하나 써놓는거지?" 하는 의문이 풀렸다. 프론트로는 클래스(여기선 그니까 엔티티 클래스)를 직접 보내면 안되는거였고, 프론트가 원하는 정보를 백에서 DB라는 창고에 가서 DTO라는 상자에 담아서 그 DTO상자를 넘겨주는거였다. 그걸 지금까지는 이해하기 쉬우라고 클래스 엔티티를 째로 넘겨주고 있었던거고, 지금 처음 DTO를 써보는 상황인걸 이해했다.  
+  
+디버그 쓰는 법을 배웠다. 아니, 전에도 배웠긴 한데 방법만 알지, 어떤 상황에서 어떻게 써먹어야 하는지를 몰라서 못쓰고 있었는데, 포스트 리스트가 안나오는 상황에서 어디서 막혀서 못나오고 있는건지를 확인하는 용도로 여기저기 점찍어서 확인해봤는데, 드디어 어떤 상황에서 써야하는지를 좀 알았다.  
