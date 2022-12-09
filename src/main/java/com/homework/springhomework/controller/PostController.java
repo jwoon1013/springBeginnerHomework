@@ -1,8 +1,5 @@
 package com.homework.springhomework.controller;
-import com.homework.springhomework.dto.DeleteResponseDto;
-import com.homework.springhomework.dto.ResponseTotalPostDto;
-import com.homework.springhomework.dto.RequestDto;
-import com.homework.springhomework.dto.ResponsePostDto;
+import com.homework.springhomework.dto.*;
 import com.homework.springhomework.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +32,8 @@ public class PostController {
     }
 
     @DeleteMapping("/posts/{id}")
-    public DeleteResponseDto deletePost(@PathVariable Long id){
-        return postService.deletePost(id);
+    public DeleteResponseDto deletePost(@PathVariable Long id, @RequestBody String password){
+        return postService.deletePost(id, password);
     }
 
 

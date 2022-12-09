@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ResponseTotalPostDto {
 
-    private List<ResponsePostDto> postDtoList;
+    private List<ResponsePostNoMsgDto> postNoMsgDtoList;
     private String msg;
 }
